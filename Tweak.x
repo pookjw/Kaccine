@@ -35,6 +35,16 @@ NSMutableArray *timers = nil;
 - (void)webView:(id)v1 runJavaScriptConfirmPanelWithMessage:(id)v2 initiatedByFrame:(id)v3 completionHandler:(void (^)(BOOL))v4;
 @end
 
+%hook UIViewController
+- (void)presentViewController:(UIViewController *)viewControllerToPresent 
+                     animated:(BOOL)flag 
+                   completion:(void (^)(void))completion {
+	[UIView performWithoutAnimation:^(){
+		%orig(viewControllerToPresent, NO, completion);
+	}];
+}
+%end
+
 %hook _TtC9KakaoTalk29SharpTabWebPageViewController
 - (void)viewDidLoad {
 	%orig();
