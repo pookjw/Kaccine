@@ -60,11 +60,11 @@ NSMutableArray *timers = nil;
 	}
 
 	__weak typeof(self) weakSelf = self;
-	NSTimer *refreshTimer = [NSTimer scheduledTimerWithTimeInterval:0.7 repeats:YES block:^(NSTimer * _Nonnull timer) {
+	NSTimer *refreshTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
 		[weakSelf refersh];
     }];
 
-	NSTimer *clickMarkerTimer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+	NSTimer *clickMarkerTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 repeats:YES block:^(NSTimer * _Nonnull timer) {
 		[weakSelf clickMarker];
     }];
 
@@ -138,7 +138,7 @@ NSMutableArray *timers = nil;
 	buttons = document.getElementsByTagName('button');\
 	for (let i = 0; i < buttons.length; i++) {\
 		button = buttons[i];\
-		if ((button.textContent == '당일예약') && (button.className == 'btn ')) {\
+		if (button.textContent == '당일예약') {\
 			button.click()\
 		}\
 	}\
